@@ -19,7 +19,7 @@ public class JPT_NumberBaseball : ModuleRules
 
         PrivateDependencyModuleNames.AddRange(new string[] { });
 
-        PublicIncludePaths.AddRange(new string[] { "JPT_NumberBaseball" });
+        PublicIncludePaths.AddRange(new string[] { ModuleDirectory });
         // Uncomment if you are using Slate UI
         // PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 
