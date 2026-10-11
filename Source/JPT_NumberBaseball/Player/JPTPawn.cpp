@@ -1,34 +1,24 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// JPTPawn.cpp
 
 
-#include "Player/JPTPawn.h"
+#include "JPTPawn.h"
+#include "JPT_NumberBaseball.h"
 
-// Sets default values
-AJPTPawn::AJPTPawn()
-{
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
 
-}
-
-// Called when the game starts or when spawned
 void AJPTPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	FString NetRoleString = JPT_NumberBaseballFunctionLibrary::GetRoleString(this);
+	FString CombinedString = FString::Printf(TEXT("JPTPawn::BeginPlay() %s [%s]"), *JPT_NumberBaseballFunctionLibrary::GetNetModeString(this), *NetRoleString);
+	JPT_NumberBaseballFunctionLibrary::MyPrintString(this, CombinedString, 10.f);
 }
 
-// Called every frame
-void AJPTPawn::Tick(float DeltaTime)
+void AJPTPawn::PossessedBy(AController* NewController)
 {
-	Super::Tick(DeltaTime);
+	Super::PossessedBy(NewController);
 
+	FString NetRoleString = JPT_NumberBaseballFunctionLibrary::GetRoleString(this);
+	FString CombinedString = FString::Printf(TEXT("JPTPawn::PossessedBy() %s [%s]"), *JPT_NumberBaseballFunctionLibrary::GetNetModeString(this), *NetRoleString);
+	JPT_NumberBaseballFunctionLibrary::MyPrintString(this, CombinedString, 10.f);
 }
-
-// Called to bind functionality to input
-void AJPTPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
-
