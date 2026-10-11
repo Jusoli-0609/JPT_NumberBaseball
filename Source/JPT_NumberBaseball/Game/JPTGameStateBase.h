@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// JPTGameStateBase.h
 
 #pragma once
 
@@ -7,11 +7,15 @@
 #include "JPTGameStateBase.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class JPT_NUMBERBASEBALL_API AJPTGameStateBase : public AGameStateBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastRPCBroadcastLoginMessage(const FString& InNameString = FString(TEXT("XXXXXXX")));
+
 };
